@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lillab — European Social Platform</title>
+    <meta
+      name="description"
+      content="Lillab is a non-US social platform focused on European communities, privacy and multilingual communication."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a href="#" class="brand" aria-label="Lillab home">
+          <svg class="brand-logo" viewBox="0 0 500 360" role="img" aria-label="Lillab logo">
+            <path
+              d="M66,190c-16,-59 22,-108 84,-113c26,-2 39,6 55,5c18,-2 31,-14 69,-9c30,4 52,17 66,29c16,14 28,15 46,2c26,-18 67,-8 90,19c22,26 29,63 14,93c-12,24 -38,40 -64,43c-32,4 -47,15 -58,40c-19,42 -55,65 -100,62c-37,-3 -55,-22 -80,-31c-27,-9 -52,7 -84,5c-45,-3 -84,-33 -101,-80c-4,-10 -8,-28 -7,-65z"
+              fill="#4a59de"
+              stroke="#2110b4"
+              stroke-width="4"
+            />
+            <circle cx="165" cy="67" r="21" fill="#4a59de" stroke="#2110b4" stroke-width="4" />
+            <circle cx="288" cy="59" r="14" fill="#4a59de" stroke="#2110b4" stroke-width="4" />
+            <circle cx="401" cy="299" r="21" fill="#4a59de" stroke="#2110b4" stroke-width="4" />
+            <text x="88" y="211" fill="#f2f2e8" font-size="95" font-family="'Baloo 2', cursive" font-weight="800">LILLAB</text>
+          </svg>
+        </a>
+
+        <div class="nav-right">
+          <nav>
+            <ul class="nav-list">
+              <li><a href="#about" data-i18n="nav_about">About</a></li>
+              <li><a href="#features" data-i18n="nav_features">Features</a></li>
+              <li><a href="#safety" data-i18n="nav_safety">Safety</a></li>
+            </ul>
+          </nav>
+          <label class="lang-wrap" for="lang-switch">
+            <span class="sr-only">Language</span>
+            <select id="lang-switch" aria-label="Language switcher">
+              <option value="en">English</option>
+              <option value="da">Dansk</option>
+              <option value="no">Norsk</option>
+              <option value="de">Deutsch</option>
+              <option value="pl">Polski</option>
+              <option value="sv">Svenska</option>
+              <option value="fr">Français</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <p class="kicker" data-i18n="kicker">A social platform built in Europe</p>
+            <h1 data-i18n="hero_title">Meet, share and grow communities beyond US social media.</h1>
+            <p class="hero-text" data-i18n="hero_text">
+              Lillab is a non-American social space for creators, schools and local groups. Your content stays in Europe,
+              your language is respected, and your community stays in control.
+            </p>
+            <div class="cta-row">
+              <a class="btn" href="#account" data-i18n="cta_primary">Join early access</a>
+              <a class="btn ghost" href="#about" data-i18n="cta_secondary">Learn more</a>
+            </div>
+          </div>
+          <div class="hero-card">
+            <h2 data-i18n="card_title">Live feed preview</h2>
+            <ul class="feed-list">
+              <li>
+                <strong data-i18n="feed_1_title">Oslo Cycling Club</strong>
+                <span data-i18n="feed_1_text">Planning a safe weekend ride across the city.</span>
+              </li>
+              <li>
+                <strong data-i18n="feed_2_title">Kraków Book Circle</strong>
+                <span data-i18n="feed_2_text">New multilingual discussion room is now open.</span>
+              </li>
+              <li>
+                <strong data-i18n="feed_3_title">Berlin Makers</strong>
+                <span data-i18n="feed_3_text">Community workshop photos shared with consent labels.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="account" class="section alt">
+        <div class="container account-grid">
+          <div class="card account-card">
+            <h2 data-i18n="account_title">Create your account</h2>
+            <p data-i18n="account_text">Join Lillab in less than one minute and start your own community space.</p>
+            <form id="account-form" class="account-form">
+              <label>
+                <span data-i18n="label_name">Full name</span>
+                <input type="text" id="name" required />
+              </label>
+              <label>
+                <span>Email</span>
+                <input type="email" id="email" required />
+              </label>
+              <label>
+                <span data-i18n="label_password">Password</span>
+                <input type="password" id="password" minlength="8" required />
+              </label>
+              <button class="btn" type="submit" data-i18n="create_account_btn">Create account</button>
+              <p id="account-message" class="status" aria-live="polite"></p>
+            </form>
+          </div>
+
+          <div class="card account-card">
+            <h2 data-i18n="login_title">Log in</h2>
+            <p data-i18n="login_text">Already have an account? Log in to continue.</p>
+            <form id="login-form" class="account-form">
+              <label>
+                <span>Email</span>
+                <input type="email" id="login-email" required />
+              </label>
+              <label>
+                <span data-i18n="label_password">Password</span>
+                <input type="password" id="login-password" minlength="8" required />
+              </label>
+              <button class="btn" type="submit" data-i18n="login_btn">Log in</button>
+              <p id="login-message" class="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <div class="container">
+          <h2 data-i18n="about_title">Why Lillab?</h2>
+          <p data-i18n="about_text">
+            We are building social media from a European perspective: transparent moderation, multilingual access and privacy-first
+            infrastructure.
+          </p>
+        </div>
+      </section>
+
+      <section id="features" class="section alt">
+        <div class="container">
+          <h2 data-i18n="features_title">Platform features</h2>
+          <div class="card-grid">
+            <article class="card">
+              <h3 data-i18n="feature_1_title">Local language first</h3>
+              <p data-i18n="feature_1_text">Switch between seven languages with one click.</p>
+            </article>
+            <article class="card">
+              <h3 data-i18n="feature_2_title">Community circles</h3>
+              <p data-i18n="feature_2_text">Create private or public groups for your city, school or team.</p>
+            </article>
+            <article class="card">
+              <h3 data-i18n="feature_3_title">Data hosted in Europe</h3>
+              <p data-i18n="feature_3_text">Built for GDPR and user rights from day one.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="safety" class="section">
+        <div class="container">
+          <h2 data-i18n="safety_title">Safer social experience</h2>
+          <div class="card-grid">
+            <article class="card">
+              <h3 data-i18n="safe_1_title">Clear moderation</h3>
+              <p data-i18n="safe_1_text">Policy actions are visible and appealable.</p>
+            </article>
+            <article class="card">
+              <h3 data-i18n="safe_2_title">No addictive design</h3>
+              <p data-i18n="safe_2_text">No endless dark patterns, just meaningful interaction.</p>
+            </article>
+            <article class="card">
+              <h3 data-i18n="safe_3_title">Human support</h3>
+              <p data-i18n="safe_3_text">Real community support in your own language.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="join" class="site-footer">
+      <div class="container footer-wrap">
+        <div>
+          <h2 data-i18n="footer_title">Ready for a better social network?</h2>
+          <p data-i18n="footer_text">Write to us at hello@lillab.eu to join the pilot.</p>
+        </div>
+        <a class="btn" href="mailto:hello@lillab.eu" data-i18n="footer_btn">Contact Lillab</a>
+      </div>
+    </footer>
+
+    <script>
+      const translations = {
+        en: {
+          nav_about: 'About', nav_features: 'Features', nav_safety: 'Safety',
+          kicker: 'A social platform built in Europe',
+          hero_title: 'Meet, share and grow communities beyond US social media.',
+          hero_text: 'Lillab is a non-American social space for creators, schools and local groups. Your content stays in Europe, your language is respected, and your community stays in control.',
+          cta_primary: 'Join early access', cta_secondary: 'Learn more',
+          account_title: 'Create your account', account_text: 'Join Lillab in less than one minute and start your own community space.',
+          label_name: 'Full name', label_password: 'Password', create_account_btn: 'Create account',
+          login_title: 'Log in', login_text: 'Already have an account? Log in to continue.', login_btn: 'Log in',
+          card_title: 'Live feed preview',
+          feed_1_title: 'Oslo Cycling Club', feed_1_text: 'Planning a safe weekend ride across the city.',
+          feed_2_title: 'Kraków Book Circle', feed_2_text: 'New multilingual discussion room is now open.',
+          feed_3_title: 'Berlin Makers', feed_3_text: 'Community workshop photos shared with consent labels.',
+          about_title: 'Why Lillab?',
+          about_text: 'We are building social media from a European perspective: transparent moderation, multilingual access and privacy-first infrastructure.',
+          features_title: 'Platform features',
+          feature_1_title: 'Local language first', feature_1_text: 'Switch between seven languages with one click.',
+          feature_2_title: 'Community circles', feature_2_text: 'Create private or public groups for your city, school or team.',
+          feature_3_title: 'Data hosted in Europe', feature_3_text: 'Built for GDPR and user rights from day one.',
+          safety_title: 'Safer social experience',
+          safe_1_title: 'Clear moderation', safe_1_text: 'Policy actions are visible and appealable.',
+          safe_2_title: 'No addictive design', safe_2_text: 'No endless dark patterns, just meaningful interaction.',
+          safe_3_title: 'Human support', safe_3_text: 'Real community support in your own language.',
+          footer_title: 'Ready for a better social network?', footer_text: 'Write to us at hello@lillab.eu to join the pilot.', footer_btn: 'Contact Lillab'
+        },
+        da: {
+          nav_about: 'Om', nav_features: 'Funktioner', nav_safety: 'Sikkerhed',
+          kicker: 'En social platform bygget i Europa',
+          hero_title: 'Mød, del og skab fællesskaber udenfor amerikanske sociale medier.',
+          hero_text: 'Lillab er et ikke-amerikansk socialt rum for skabere, skoler og lokale grupper. Dit indhold bliver i Europa, dit sprog respekteres, og fællesskabet har kontrollen.',
+          cta_primary: 'Få tidlig adgang', cta_secondary: 'Læs mere',
+          account_title: 'Opret din konto', account_text: 'Bliv en del af Lillab på under ét minut og start dit eget community.',
+          label_name: 'Fulde navn', label_password: 'Adgangskode', create_account_btn: 'Opret konto',
+          login_title: 'Log ind', login_text: 'Har du allerede en konto? Log ind for at fortsætte.', login_btn: 'Log ind',
+          card_title: 'Forhåndsvisning af feed',
+          feed_1_title: 'Oslo Cykelklub', feed_1_text: 'Planlægger en sikker weekendtur gennem byen.',
+          feed_2_title: 'Kraków Bogkreds', feed_2_text: 'Nyt flersproget samtalerum er åbent.',
+          feed_3_title: 'Berlin Makers', feed_3_text: 'Workshopbilleder delt med samtykke-mærkater.',
+          about_title: 'Hvorfor Lillab?',
+          about_text: 'Vi bygger sociale medier med europæisk perspektiv: gennemsigtig moderation, flersproget adgang og privatliv først.',
+          features_title: 'Platformfunktioner',
+          feature_1_title: 'Lokalt sprog først', feature_1_text: 'Skift mellem syv sprog med ét klik.',
+          feature_2_title: 'Community-cirkler', feature_2_text: 'Lav private eller offentlige grupper til by, skole eller team.',
+          feature_3_title: 'Data hostet i Europa', feature_3_text: 'Bygget til GDPR og brugerrettigheder fra dag ét.',
+          safety_title: 'Mere sikker social oplevelse',
+          safe_1_title: 'Klar moderation', safe_1_text: 'Moderationsbeslutninger er synlige og kan appelleres.',
+          safe_2_title: 'Intet afhængighedsdesign', safe_2_text: 'Ingen mørke mønstre, kun meningsfuld interaktion.',
+          safe_3_title: 'Menneskelig support', safe_3_text: 'Rigtig community-support på dit eget sprog.',
+          footer_title: 'Klar til et bedre socialt netværk?', footer_text: 'Skriv til os på hello@lillab.eu for at komme med i piloten.', footer_btn: 'Kontakt Lillab'
+        },
+        no: {
+          nav_about: 'Om', nav_features: 'Funksjoner', nav_safety: 'Sikkerhet', kicker: 'En sosial plattform bygget i Europa',
+          hero_title: 'Møt, del og bygg fellesskap utenfor amerikanske sosiale medier.', hero_text: 'Lillab er et ikke-amerikansk sosialt rom for skapere, skoler og lokale grupper. Innholdet ditt blir i Europa, språket ditt respekteres, og fellesskapet har kontrollen.',
+          cta_primary: 'Bli med tidlig', cta_secondary: 'Les mer', card_title: 'Forhåndsvisning av feed',
+          feed_1_title: 'Oslo Sykkelklubb', feed_1_text: 'Planlegger en trygg helgetur gjennom byen.', feed_2_title: 'Kraków Boksirkel', feed_2_text: 'Nytt flerspråklig rom er nå åpent.', feed_3_title: 'Berlin Makers', feed_3_text: 'Workshop-bilder delt med samtykkeetiketter.',
+          about_title: 'Hvorfor Lillab?', about_text: 'Vi bygger sosiale medier med europeisk perspektiv: transparent moderering, flerspråklig tilgang og personvern først.', features_title: 'Plattformfunksjoner',
+          feature_1_title: 'Lokalt språk først', feature_1_text: 'Bytt mellom syv språk med ett klikk.', feature_2_title: 'Fellesskapssirkler', feature_2_text: 'Opprett private eller offentlige grupper for byen, skolen eller laget.', feature_3_title: 'Data lagres i Europa', feature_3_text: 'Bygget for GDPR og brukerrettigheter fra dag én.',
+          safety_title: 'Tryggere sosial opplevelse', safe_1_title: 'Tydelig moderering', safe_1_text: 'Tiltak er synlige og kan ankes.', safe_2_title: 'Ingen avhengighetstriks', safe_2_text: 'Ingen mørke mønstre, bare meningsfulle samtaler.', safe_3_title: 'Menneskelig støtte', safe_3_text: 'Ekte støtte på ditt eget språk.', footer_title: 'Klar for et bedre sosialt nettverk?', footer_text: 'Skriv til hello@lillab.eu for å bli med i piloten.', footer_btn: 'Kontakt Lillab'
+        },
+        de: {
+          nav_about: 'Über uns', nav_features: 'Funktionen', nav_safety: 'Sicherheit', kicker: 'Eine in Europa gebaute Social-Plattform',
+          hero_title: 'Vernetzen, teilen und Communities aufbauen – jenseits US-amerikanischer Social Media.', hero_text: 'Lillab ist ein nicht-amerikanischer sozialer Raum für Kreative, Schulen und lokale Gruppen. Deine Inhalte bleiben in Europa, deine Sprache wird respektiert und deine Community behält die Kontrolle.',
+          cta_primary: 'Frühzugang starten', cta_secondary: 'Mehr erfahren', card_title: 'Live-Feed Vorschau',
+          feed_1_title: 'Oslo Fahrradclub', feed_1_text: 'Plant eine sichere Wochenendfahrt durch die Stadt.', feed_2_title: 'Kraków Lesekreis', feed_2_text: 'Neuer mehrsprachiger Raum ist jetzt offen.', feed_3_title: 'Berlin Makers', feed_3_text: 'Workshop-Fotos mit Einwilligungskennzeichnung geteilt.',
+          about_title: 'Warum Lillab?', about_text: 'Wir bauen Social Media aus europäischer Perspektive: transparente Moderation, mehrsprachiger Zugang und Datenschutz zuerst.', features_title: 'Plattform-Funktionen',
+          feature_1_title: 'Sprache zuerst', feature_1_text: 'Wechsle mit einem Klick zwischen sieben Sprachen.', feature_2_title: 'Community-Kreise', feature_2_text: 'Erstelle private oder öffentliche Gruppen für Stadt, Schule oder Team.', feature_3_title: 'Daten in Europa gehostet', feature_3_text: 'Von Anfang an für DSGVO und Nutzerrechte gebaut.',
+          safety_title: 'Sichereres soziales Erlebnis', safe_1_title: 'Klare Moderation', safe_1_text: 'Maßnahmen sind sichtbar und anfechtbar.', safe_2_title: 'Kein Sucht-Design', safe_2_text: 'Keine Dark Patterns, nur sinnvolle Interaktion.', safe_3_title: 'Menschlicher Support', safe_3_text: 'Echter Community-Support in deiner Sprache.', footer_title: 'Bereit für ein besseres soziales Netzwerk?', footer_text: 'Schreib uns an hello@lillab.eu und werde Pilotnutzer.', footer_btn: 'Lillab kontaktieren'
+        },
+        pl: {
+          nav_about: 'O nas', nav_features: 'Funkcje', nav_safety: 'Bezpieczeństwo', kicker: 'Platforma społecznościowa zbudowana w Europie',
+          hero_title: 'Poznawaj ludzi, udostępniaj i rozwijaj społeczności poza amerykańskimi mediami społecznościowymi.', hero_text: 'Lillab to nieamerykańska przestrzeń społecznościowa dla twórców, szkół i lokalnych grup. Twoje treści zostają w Europie, język jest szanowany, a społeczność zachowuje kontrolę.',
+          cta_primary: 'Dołącz wcześniej', cta_secondary: 'Dowiedz się więcej', card_title: 'Podgląd kanału',
+          feed_1_title: 'Oslo Cycling Club', feed_1_text: 'Planowanie bezpiecznej weekendowej trasy przez miasto.', feed_2_title: 'Krakowski Klub Książki', feed_2_text: 'Nowy wielojęzyczny pokój dyskusyjny jest otwarty.', feed_3_title: 'Berlin Makers', feed_3_text: 'Zdjęcia z warsztatów udostępnione z oznaczeniem zgody.',
+          about_title: 'Dlaczego Lillab?', about_text: 'Budujemy media społecznościowe z europejskiej perspektywy: przejrzysta moderacja, wielojęzyczny dostęp i prywatność na pierwszym miejscu.', features_title: 'Funkcje platformy',
+          feature_1_title: 'Najpierw lokalny język', feature_1_text: 'Przełączaj między siedmioma językami jednym kliknięciem.', feature_2_title: 'Kręgi społeczności', feature_2_text: 'Twórz prywatne lub publiczne grupy dla miasta, szkoły lub zespołu.', feature_3_title: 'Dane hostowane w Europie', feature_3_text: 'Od początku zgodne z RODO i prawami użytkownika.',
+          safety_title: 'Bezpieczniejsze doświadczenie społeczne', safe_1_title: 'Jasna moderacja', safe_1_text: 'Decyzje są widoczne i można się od nich odwołać.', safe_2_title: 'Bez uzależniających wzorców', safe_2_text: 'Bez dark patterns, tylko wartościowe interakcje.', safe_3_title: 'Ludzkie wsparcie', safe_3_text: 'Prawdziwe wsparcie społeczności w Twoim języku.', footer_title: 'Gotowy na lepszą sieć społecznościową?', footer_text: 'Napisz na hello@lillab.eu, aby dołączyć do pilotażu.', footer_btn: 'Skontaktuj się z Lillab'
+        },
+        sv: {
+          nav_about: 'Om', nav_features: 'Funktioner', nav_safety: 'Trygghet', kicker: 'En social plattform byggd i Europa',
+          hero_title: 'Möt, dela och bygg gemenskaper bortom amerikanska sociala medier.', hero_text: 'Lillab är en icke-amerikansk social plattform för kreatörer, skolor och lokala grupper. Ditt innehåll stannar i Europa, ditt språk respekteras och communityn behåller kontrollen.',
+          cta_primary: 'Gå med tidigt', cta_secondary: 'Läs mer', card_title: 'Förhandsvisning av flöde',
+          feed_1_title: 'Oslo Cykelklubb', feed_1_text: 'Planerar en trygg helgtur genom staden.', feed_2_title: 'Kraków Bokcirkel', feed_2_text: 'Nytt flerspråkigt diskussionsrum är öppet.', feed_3_title: 'Berlin Makers', feed_3_text: 'Workshopbilder delade med samtyckesmärkning.',
+          about_title: 'Varför Lillab?', about_text: 'Vi bygger sociala medier ur ett europeiskt perspektiv: transparent moderering, flerspråkig tillgång och integritet först.', features_title: 'Plattformsfunktioner',
+          feature_1_title: 'Lokalt språk först', feature_1_text: 'Växla mellan sju språk med ett klick.', feature_2_title: 'Community-cirklar', feature_2_text: 'Skapa privata eller offentliga grupper för stad, skola eller team.', feature_3_title: 'Data lagras i Europa', feature_3_text: 'Byggt för GDPR och användarrättigheter från dag ett.',
+          safety_title: 'Tryggare social upplevelse', safe_1_title: 'Tydlig moderering', safe_1_text: 'Åtgärder är synliga och kan överklagas.', safe_2_title: 'Ingen beroendedesign', safe_2_text: 'Inga mörka mönster, bara meningsfull interaktion.', safe_3_title: 'Mänsklig support', safe_3_text: 'Riktig community-support på ditt språk.', footer_title: 'Redo för ett bättre socialt nätverk?', footer_text: 'Skriv till hello@lillab.eu för att gå med i piloten.', footer_btn: 'Kontakta Lillab'
+        },
+        fr: {
+          nav_about: 'À propos', nav_features: 'Fonctionnalités', nav_safety: 'Sécurité', kicker: 'Une plateforme sociale construite en Europe',
+          hero_title: 'Rencontrez, partagez et développez des communautés au-delà des réseaux sociaux américains.', hero_text: 'Lillab est un espace social non américain pour créateurs, écoles et groupes locaux. Vos contenus restent en Europe, votre langue est respectée et votre communauté garde le contrôle.',
+          cta_primary: 'Rejoindre l’accès anticipé', cta_secondary: 'En savoir plus', card_title: 'Aperçu du fil en direct',
+          feed_1_title: 'Club Cycliste d’Oslo', feed_1_text: 'Prépare une sortie sûre ce week-end en ville.', feed_2_title: 'Cercle de lecture de Cracovie', feed_2_text: 'Nouvelle salle de discussion multilingue ouverte.', feed_3_title: 'Berlin Makers', feed_3_text: 'Photos d’atelier partagées avec étiquettes de consentement.',
+          about_title: 'Pourquoi Lillab ?', about_text: 'Nous construisons un réseau social avec une perspective européenne : modération transparente, accès multilingue et infrastructure centrée sur la vie privée.', features_title: 'Fonctionnalités de la plateforme',
+          feature_1_title: 'Langue locale d’abord', feature_1_text: 'Passez entre sept langues en un clic.', feature_2_title: 'Cercles communautaires', feature_2_text: 'Créez des groupes privés ou publics pour votre ville, école ou équipe.', feature_3_title: 'Données hébergées en Europe', feature_3_text: 'Conçu pour le RGPD et les droits des utilisateurs dès le départ.',
+          safety_title: 'Une expérience sociale plus sûre', safe_1_title: 'Modération claire', safe_1_text: 'Les actions sont visibles et contestables.', safe_2_title: 'Sans design addictif', safe_2_text: 'Pas de dark patterns, seulement des échanges utiles.', safe_3_title: 'Support humain', safe_3_text: 'Un vrai support communautaire dans votre langue.', footer_title: 'Prêt pour un meilleur réseau social ?', footer_text: 'Écrivez-nous à hello@lillab.eu pour rejoindre le pilote.', footer_btn: 'Contacter Lillab'
+        }
+      };
+
+      const select = document.getElementById('lang-switch');
+      const applyLanguage = (lang) => {
+        const dict = translations[lang] || translations.en;
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-i18n]').forEach((node) => {
+          const key = node.dataset.i18n;
+          if (dict[key]) node.textContent = dict[key];
+        });
+      };
+
+      select.addEventListener('change', (event) => applyLanguage(event.target.value));
+
+      const accountForm = document.getElementById('account-form');
+      const accountMessage = document.getElementById('account-message');
+
+      const loginForm = document.getElementById('login-form');
+      const loginMessage = document.getElementById('login-message');
+
+      accountForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+        if (!name || !email || !password) return;
+        localStorage.setItem('lillabAccount', JSON.stringify({ name, email, password }));
+        accountMessage.textContent = `✅ Account created for ${name}.`;
+      });
+
+      loginForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const email = document.getElementById('login-email').value.trim();
+        const password = document.getElementById('login-password').value;
+        const savedAccountRaw = localStorage.getItem('lillabAccount');
+        if (!savedAccountRaw) {
+          loginMessage.textContent = '❌ No account found. Create one first.';
+          return;
+        }
+        const savedAccount = JSON.parse(savedAccountRaw);
+        if (savedAccount.email === email && savedAccount.password === password) {
+          loginMessage.textContent = `✅ Welcome back, ${savedAccount.name}.`;
+        } else {
+          loginMessage.textContent = '❌ Incorrect email or password.';
+        }
+      });
+
+      const savedAccount = localStorage.getItem('lillabAccount');
+      if (savedAccount) {
+        const { name } = JSON.parse(savedAccount);
+        accountMessage.textContent = `✅ Account ready: ${name}`;
+      }
+
+      applyLanguage('en');
+    </script>
+  </body>
+</html>
