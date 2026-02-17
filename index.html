@@ -69,7 +69,7 @@
               your language is respected, and your community stays in control.
             </p>
             <div class="cta-row">
-              <a class="btn" href="mailto:hello@lillab.eu?subject=Early%20access%20for%20Lillab&body=Hi%20Lillab%2C%20I%20want%20early%20access." data-i18n="cta_primary">Join early access</a>
+              <a class="btn" href="#account" data-i18n="cta_primary">Join early access</a>
               <a class="btn ghost" href="#about" data-i18n="cta_secondary">Learn more</a>
             </div>
           </div>
@@ -89,6 +89,44 @@
                 <span data-i18n="feed_3_text">Community workshop photos shared with consent labels.</span>
               </li>
             </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="account" class="section alt">
+        <div class="container account-grid">
+          <div class="card account-card">
+            <h2 data-i18n="account_title">Create your account</h2>
+            <p data-i18n="account_text">Join Lillab in less than one minute and start your own community space.</p>
+            <form id="account-form" class="account-form">
+              <label>
+                <span data-i18n="label_name">Full name</span>
+                <input type="text" id="name" required />
+              </label>
+              <label>
+                <span>Email</span>
+                <input type="email" id="email" required />
+              </label>
+              <label>
+                <span data-i18n="label_password">Password</span>
+                <input type="password" id="password" minlength="8" required />
+              </label>
+              <button class="btn" type="submit" data-i18n="create_account_btn">Create account</button>
+              <p id="account-message" class="status" aria-live="polite"></p>
+            </form>
+          </div>
+
+          <div class="card account-card">
+            <h2 data-i18n="logo_title">Upload your own logo</h2>
+            <p data-i18n="logo_text">Choose PNG, JPG or SVG and preview it instantly on your profile card.</p>
+            <label class="upload-field">
+              <span data-i18n="logo_input_label">Select logo file</span>
+              <input id="logo-upload" type="file" accept="image/png,image/jpeg,image/svg+xml" />
+            </label>
+            <div class="logo-preview-wrap">
+              <img id="custom-logo-preview" alt="Uploaded logo preview" hidden />
+              <p id="logo-help" class="status" data-i18n="logo_help">No custom logo uploaded yet.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -162,6 +200,10 @@
           hero_title: 'Meet, share and grow communities beyond US social media.',
           hero_text: 'Lillab is a non-American social space for creators, schools and local groups. Your content stays in Europe, your language is respected, and your community stays in control.',
           cta_primary: 'Join early access', cta_secondary: 'Learn more',
+          account_title: 'Create your account', account_text: 'Join Lillab in less than one minute and start your own community space.',
+          label_name: 'Full name', label_password: 'Password', create_account_btn: 'Create account',
+          logo_title: 'Upload your own logo', logo_text: 'Choose PNG, JPG or SVG and preview it instantly on your profile card.',
+          logo_input_label: 'Select logo file', logo_help: 'No custom logo uploaded yet.',
           card_title: 'Live feed preview',
           feed_1_title: 'Oslo Cycling Club', feed_1_text: 'Planning a safe weekend ride across the city.',
           feed_2_title: 'Kraków Book Circle', feed_2_text: 'New multilingual discussion room is now open.',
@@ -184,6 +226,10 @@
           hero_title: 'Mød, del og skab fællesskaber udenfor amerikanske sociale medier.',
           hero_text: 'Lillab er et ikke-amerikansk socialt rum for skabere, skoler og lokale grupper. Dit indhold bliver i Europa, dit sprog respekteres, og fællesskabet har kontrollen.',
           cta_primary: 'Få tidlig adgang', cta_secondary: 'Læs mere',
+          account_title: 'Opret din konto', account_text: 'Bliv en del af Lillab på under ét minut og start dit eget community.',
+          label_name: 'Fulde navn', label_password: 'Adgangskode', create_account_btn: 'Opret konto',
+          logo_title: 'Upload dit eget logo', logo_text: 'Vælg PNG, JPG eller SVG og se forhåndsvisning med det samme.',
+          logo_input_label: 'Vælg logofil', logo_help: 'Intet brugerlogo uploadet endnu.',
           card_title: 'Forhåndsvisning af feed',
           feed_1_title: 'Oslo Cykelklub', feed_1_text: 'Planlægger en sikker weekendtur gennem byen.',
           feed_2_title: 'Kraków Bogkreds', feed_2_text: 'Nyt flersproget samtalerum er åbent.',
@@ -258,6 +304,37 @@
       };
 
       select.addEventListener('change', (event) => applyLanguage(event.target.value));
+
+      const accountForm = document.getElementById('account-form');
+      const accountMessage = document.getElementById('account-message');
+      const logoInput = document.getElementById('logo-upload');
+      const logoPreview = document.getElementById('custom-logo-preview');
+      const logoHelp = document.getElementById('logo-help');
+
+      accountForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        if (!name || !email) return;
+        localStorage.setItem('lillabAccount', JSON.stringify({ name, email }));
+        accountMessage.textContent = `✅ Account created for ${name}.`;
+      });
+
+      logoInput.addEventListener('change', (event) => {
+        const [file] = event.target.files;
+        if (!file) return;
+        const objectUrl = URL.createObjectURL(file);
+        logoPreview.src = objectUrl;
+        logoPreview.hidden = false;
+        logoHelp.textContent = `✅ ${file.name}`;
+      });
+
+      const savedAccount = localStorage.getItem('lillabAccount');
+      if (savedAccount) {
+        const { name } = JSON.parse(savedAccount);
+        accountMessage.textContent = `✅ Account ready: ${name}`;
+      }
+
       applyLanguage('en');
     </script>
   </body>
