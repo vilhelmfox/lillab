@@ -172,15 +172,13 @@ h1 { font-size: clamp(2rem, 4.6vw, 3.6rem); }
   gap: 0.7rem;
 }
 
-.account-form label,
-.upload-field {
+.account-form label {
   display: grid;
   gap: 0.35rem;
   font-weight: 700;
 }
 
-.account-form input,
-.upload-field input {
+.account-form input {
   border: 1px solid rgba(31, 34, 80, 0.25);
   border-radius: 0.65rem;
   padding: 0.6rem 0.7rem;
@@ -193,22 +191,6 @@ h1 { font-size: clamp(2rem, 4.6vw, 3.6rem); }
   font-weight: 700;
 }
 
-.logo-preview-wrap {
-  min-height: 170px;
-  border: 1px dashed rgba(31, 34, 80, 0.28);
-  border-radius: 0.85rem;
-  padding: 0.9rem;
-  display: grid;
-  place-items: center;
-  gap: 0.6rem;
-  background: rgba(255, 255, 255, 0.7);
-}
-
-#custom-logo-preview {
-  max-height: 96px;
-  max-width: 100%;
-  object-fit: contain;
-}
 
 @media (max-width: 960px) {
   .nav-wrap,

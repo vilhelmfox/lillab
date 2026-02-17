@@ -117,16 +117,20 @@
           </div>
 
           <div class="card account-card">
-            <h2 data-i18n="logo_title">Upload your own logo</h2>
-            <p data-i18n="logo_text">Choose PNG, JPG or SVG and preview it instantly on your profile card.</p>
-            <label class="upload-field">
-              <span data-i18n="logo_input_label">Select logo file</span>
-              <input id="logo-upload" type="file" accept="image/png,image/jpeg,image/svg+xml" />
-            </label>
-            <div class="logo-preview-wrap">
-              <img id="custom-logo-preview" alt="Uploaded logo preview" hidden />
-              <p id="logo-help" class="status" data-i18n="logo_help">No custom logo uploaded yet.</p>
-            </div>
+            <h2 data-i18n="login_title">Log in</h2>
+            <p data-i18n="login_text">Already have an account? Log in to continue.</p>
+            <form id="login-form" class="account-form">
+              <label>
+                <span>Email</span>
+                <input type="email" id="login-email" required />
+              </label>
+              <label>
+                <span data-i18n="label_password">Password</span>
+                <input type="password" id="login-password" minlength="8" required />
+              </label>
+              <button class="btn" type="submit" data-i18n="login_btn">Log in</button>
+              <p id="login-message" class="status" aria-live="polite"></p>
+            </form>
           </div>
         </div>
       </section>
@@ -202,8 +206,7 @@
           cta_primary: 'Join early access', cta_secondary: 'Learn more',
           account_title: 'Create your account', account_text: 'Join Lillab in less than one minute and start your own community space.',
           label_name: 'Full name', label_password: 'Password', create_account_btn: 'Create account',
-          logo_title: 'Upload your own logo', logo_text: 'Choose PNG, JPG or SVG and preview it instantly on your profile card.',
-          logo_input_label: 'Select logo file', logo_help: 'No custom logo uploaded yet.',
+          login_title: 'Log in', login_text: 'Already have an account? Log in to continue.', login_btn: 'Log in',
           card_title: 'Live feed preview',
           feed_1_title: 'Oslo Cycling Club', feed_1_text: 'Planning a safe weekend ride across the city.',
           feed_2_title: 'Kraków Book Circle', feed_2_text: 'New multilingual discussion room is now open.',
@@ -228,8 +231,7 @@
           cta_primary: 'Få tidlig adgang', cta_secondary: 'Læs mere',
           account_title: 'Opret din konto', account_text: 'Bliv en del af Lillab på under ét minut og start dit eget community.',
           label_name: 'Fulde navn', label_password: 'Adgangskode', create_account_btn: 'Opret konto',
-          logo_title: 'Upload dit eget logo', logo_text: 'Vælg PNG, JPG eller SVG og se forhåndsvisning med det samme.',
-          logo_input_label: 'Vælg logofil', logo_help: 'Intet brugerlogo uploadet endnu.',
+          login_title: 'Log ind', login_text: 'Har du allerede en konto? Log ind for at fortsætte.', login_btn: 'Log ind',
           card_title: 'Forhåndsvisning af feed',
           feed_1_title: 'Oslo Cykelklub', feed_1_text: 'Planlægger en sikker weekendtur gennem byen.',
           feed_2_title: 'Kraków Bogkreds', feed_2_text: 'Nyt flersproget samtalerum er åbent.',
@@ -307,26 +309,35 @@
 
       const accountForm = document.getElementById('account-form');
       const accountMessage = document.getElementById('account-message');
-      const logoInput = document.getElementById('logo-upload');
-      const logoPreview = document.getElementById('custom-logo-preview');
-      const logoHelp = document.getElementById('logo-help');
+
+      const loginForm = document.getElementById('login-form');
+      const loginMessage = document.getElementById('login-message');
 
       accountForm.addEventListener('submit', (event) => {
         event.preventDefault();
         const name = document.getElementById('name').value.trim();
         const email = document.getElementById('email').value.trim();
-        if (!name || !email) return;
-        localStorage.setItem('lillabAccount', JSON.stringify({ name, email }));
+        const password = document.getElementById('password').value;
+        if (!name || !email || !password) return;
+        localStorage.setItem('lillabAccount', JSON.stringify({ name, email, password }));
         accountMessage.textContent = `✅ Account created for ${name}.`;
       });
 
-      logoInput.addEventListener('change', (event) => {
-        const [file] = event.target.files;
-        if (!file) return;
-        const objectUrl = URL.createObjectURL(file);
-        logoPreview.src = objectUrl;
-        logoPreview.hidden = false;
-        logoHelp.textContent = `✅ ${file.name}`;
+      loginForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const email = document.getElementById('login-email').value.trim();
+        const password = document.getElementById('login-password').value;
+        const savedAccountRaw = localStorage.getItem('lillabAccount');
+        if (!savedAccountRaw) {
+          loginMessage.textContent = '❌ No account found. Create one first.';
+          return;
+        }
+        const savedAccount = JSON.parse(savedAccountRaw);
+        if (savedAccount.email === email && savedAccount.password === password) {
+          loginMessage.textContent = `✅ Welcome back, ${savedAccount.name}.`;
+        } else {
+          loginMessage.textContent = '❌ Incorrect email or password.';
+        }
       });
 
       const savedAccount = localStorage.getItem('lillabAccount');
